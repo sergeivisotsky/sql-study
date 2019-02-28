@@ -36,21 +36,18 @@ FROM film_actor fa
        LEFT OUTER JOIN
      film_text ft ON ft.film_id = f.film_id
 WHERE f.last_update = '2006-02-15 05:03:42'
-GROUP BY f.title;
+GROUP BY f.title DESC;
 
-SELECT DISTINCT
-  ft.title,
-  ft.description,
-  inv.last_update,
-  fc.category_id,
-  cat.name
-FROM
-  film_text ft
-    LEFT OUTER JOIN
-  inventory inv ON ft.film_id = inv.film_id
-    LEFT OUTER JOIN
-  film_category fc ON fc.film_id = ft.film_id
-    LEFT OUTER JOIN
-  category cat ON cat.category_id = fc.category_id
-WHERE
-    ft.film_id = 1;
+SELECT DISTINCT ft.title,
+                ft.description,
+                inv.last_update,
+                fc.category_id,
+                cat.name
+FROM film_text ft
+       LEFT OUTER JOIN
+     inventory inv ON ft.film_id = inv.film_id
+       LEFT OUTER JOIN
+     film_category fc ON fc.film_id = ft.film_id
+       LEFT OUTER JOIN
+     category cat ON cat.category_id = fc.category_id
+WHERE ft.film_id = 1;
