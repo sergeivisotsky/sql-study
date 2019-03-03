@@ -51,3 +51,22 @@ FROM film_text ft
        LEFT OUTER JOIN
      category cat ON cat.category_id = fc.category_id
 WHERE ft.film_id = 1;
+
+SELECT 
+    s.address_id,
+    s.last_update,
+    st.first_name,
+    st.last_name,
+    st.email,
+    st.username,
+    a.address,
+    a.phone,
+    c.city
+FROM
+    store s
+        LEFT JOIN
+    staff st ON s.manager_staff_id = st.staff_id
+        LEFT JOIN
+    address a ON s.address_id = a.address_id
+        LEFT JOIN
+    city c ON c.city_id = a.city_id;
