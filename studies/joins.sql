@@ -70,3 +70,14 @@ FROM
     address a ON s.address_id = a.address_id
         LEFT JOIN
     city c ON c.city_id = a.city_id;
+    
+SELECT 
+	F.TITLE, 
+    F.DESCRIPTION,
+    F.RELEASE_YEAR, 
+    MAX(F.REPLACEMENT_COST)
+FROM FILM F
+GROUP BY 
+	TITLE, 
+    DESCRIPTION, 
+    RELEASE_YEAR;
