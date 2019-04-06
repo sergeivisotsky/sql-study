@@ -69,7 +69,8 @@ FROM
         LEFT JOIN
     address a ON s.address_id = a.address_id
         LEFT JOIN
-    city c ON c.city_id = a.city_id;
+    city c ON c.city_id = a.city_id
+limit 1 offset 1;
     
 SELECT 
 	F.TITLE, 
